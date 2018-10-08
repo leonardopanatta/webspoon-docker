@@ -19,3 +19,5 @@ ADD https://github.com/HiromuHota/pentaho-kettle/releases/download/webspoon%2F$v
 RUN echo "CLASSPATH="$CATALINA_HOME"/lib/webspoon-security-$dist-$patch.jar" | tee ${CATALINA_HOME}/bin/setenv.sh
 COPY catalina.policy ${CATALINA_HOME}/conf/
 RUN mkdir -p $HOME/.kettle/users && mkdir -p $HOME/.pentaho/users
+
+ADD ojdbc6.jar ${CATALINA_HOME}/lib/
