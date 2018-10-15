@@ -1,5 +1,5 @@
 FROM tomcat:jre8
-MAINTAINER Hiromu Hota <hiromu.hota@hal.hitachi.com>
+MAINTAINER Leonardo Panatta <leopanatta@gmail.com>
 ENV JAVA_OPTS="-Xms1024m -Xmx2048m"
 RUN rm /etc/java-8-openjdk/accessibility.properties
 RUN rm -rf ${CATALINA_HOME}/webapps/* \
@@ -21,3 +21,6 @@ COPY catalina.policy ${CATALINA_HOME}/conf/
 RUN mkdir -p $HOME/.kettle/users && mkdir -p $HOME/.pentaho/users
 
 ADD ojdbc6.jar ${CATALINA_HOME}/lib/
+
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
